@@ -39,7 +39,7 @@ public class JWTUtil {
     }
 
     // 验证token
-    public static boolean verify(String token) {
+    public static boolean authentication(String token) {
         try {
             Algorithm algorithm = Algorithm.HMAC256(TOKEN_SECRET);
             JWTVerifier verifier = JWT.require(algorithm).build();

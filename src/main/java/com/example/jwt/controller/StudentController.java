@@ -1,6 +1,7 @@
 package com.example.jwt.controller;
 
 
+import com.example.jwt.annotation.TokenRequired;
 import com.example.jwt.util.JWTUtil;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,6 +15,12 @@ public class StudentController {
         if ((token = JWTUtil.sign(username, password, true, false)) != null)
             return token;
         return "sign fail";
+    }
+
+    @GetMapping(value = "/student/authentication")
+    @TokenRequired
+    public String authentication() {
+        return "authentication success";
     }
 
 }
